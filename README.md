@@ -12,7 +12,7 @@
 ![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge\&logo=tailwindcss\&logoColor=white)
 ![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge\&logo=vercel\&logoColor=white)
 
-[![License](https://img.shields.io/github/license/vanthasy/notiq)](https://github.com/vanthasy/notiq/blob/main/LICENSE)
+[![License](https://img.shields.io/github/license/radityprtama/notiq)](https://github.com/radityprtama/Notiq/blob/5864bdf811df1643634045d15eddc182628b995d/LICENSE)
 [![Deploy to Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge\&logo=vercel)](https://vercel.com/new)
 
 ---
