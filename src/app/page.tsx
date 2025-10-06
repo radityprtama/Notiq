@@ -13,8 +13,10 @@ export default function Home() {
   }, []);
 
   const checkAuth = async () => {
-    const { data: { user } } = await supabase.auth.getUser();
-    
+    const {
+      data: { user },
+    } = await supabase.auth.getUser();
+
     if (user) {
       router.push("/dashboard");
     } else {
@@ -23,12 +25,19 @@ export default function Home() {
   };
 
   return (
-    <div className="flex items-center justify-center min-h-screen bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800">
+    <div className="flex items-center justify-center min-h-screen bg-background">
       <div className="text-center">
-        <span className="text-7xl block mb-4 animate-pulse">🪶</span>
-        <h1 className="text-2xl font-bold mb-2">Notiq</h1>
-        <Loader2 className="h-8 w-8 animate-spin text-muted-foreground mx-auto mt-4" />
-        <p className="mt-4 text-muted-foreground">Loading your second brain...</p>
+        <div className="relative inline-block mb-6">
+          <span className="text-7xl block animate-pulse">🪶</span>
+          <div className="absolute inset-0 bg-primary/10 blur-3xl -z-10" />
+        </div>
+        <h1 className="text-3xl font-semibold mb-3">Notiq</h1>
+        <div className="flex items-center justify-center gap-2 mt-6">
+          <Loader2 className="h-5 w-5 animate-spin text-muted-foreground" />
+          <p className="text-sm text-muted-foreground">
+            Loading your workspace...
+          </p>
+        </div>
       </div>
     </div>
   );

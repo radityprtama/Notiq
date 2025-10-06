@@ -12,20 +12,24 @@ export async function POST(req: Request) {
       );
     }
 
-    const prompt = instruction 
+    const prompt = instruction
       ? `Rewrite this note with the following instruction: ${instruction}\n\nNote:\n${content}`
       : `Improve and rewrite this note to make it clearer and more professional:\n${content}`;
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "z-ai/glm-4.5-air:free",
       messages: [
-        { role: "system", content: "You are a helpful AI writing assistant. Rewrite notes to improve clarity and professionalism." },
+        {
+          role: "system",
+          content:
+            "You are a helpful AI writing assistant. Rewrite notes to improve clarity and professionalism.",
+        },
         { role: "user", content: prompt },
       ],
     });
 
-    return NextResponse.json({ 
-      rewritten: completion.choices[0].message?.content || "" 
+    return NextResponse.json({
+      rewritten: completion.choices[0].message?.content || "",
     });
   } catch (error) {
     console.error("Rewrite error:", error);

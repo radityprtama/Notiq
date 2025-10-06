@@ -1,8 +1,7 @@
 "use client";
 
 import { useState } from "react";
-import { Button } from "@/components/ui/button";
-import { Sparkles, Pencil, Tag, Loader2 } from "lucide-react";
+import { Sparkles, Wand2, Hash, Loader2, X, Check, Copy } from "lucide-react";
 import { Note } from "@/lib/types";
 import {
   Dialog,
@@ -21,6 +20,7 @@ export function AIToolbar({ note, onUpdate }: AIToolbarProps) {
   const [loading, setLoading] = useState<string | null>(null);
   const [result, setResult] = useState<string | null>(null);
   const [dialogOpen, setDialogOpen] = useState(false);
+  const [copied, setCopied] = useState(false);
 
   if (!note) return null;
 
@@ -93,54 +93,67 @@ export function AIToolbar({ note, onUpdate }: AIToolbarProps) {
     }
   };
 
+  const copyToClipboard = () => {
+    if (result) {
+      navigator.clipboard.writeText(result);
+      setCopied(true);
+      setTimeout(() => setCopied(false), 2000);
+    }
+  };
+
   return (
     <>
-      <div className="border-b p-2 flex items-center gap-2 bg-muted/20">
-        <span className="text-sm text-muted-foreground mr-2">AI Tools:</span>
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={handleSummarize}
-          disabled={loading !== null || !note.content}
-        >
-          {loading === "summarize" ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            <Sparkles className="h-4 w-4 mr-1" />
-          )}
-          Summarize
-        </Button>
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={handleRewrite}
-          disabled={loading !== null || !note.content}
-        >
-          {loading === "rewrite" ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            <Pencil className="h-4 w-4 mr-1" />
-          )}
-          Rewrite
-        </Button>
-        <Button
-          size="sm"
-          variant="outline"
-          onClick={handleGenerateTags}
-          disabled={loading !== null || !note.content}
-        >
-          {loading === "tag" ? (
-            <Loader2 className="h-4 w-4 animate-spin" />
-          ) : (
-            <Tag className="h-4 w-4 mr-1" />
-          )}
-          Generate Tags
-        </Button>
+      <div className="flex items-center justify-between px-16 py-2 border-b border-border/40 bg-background/50">
+        <div className="flex items-center gap-1.5">
+          <button
+            onClick={handleSummarize}
+            disabled={loading !== null || !note.content}
+            className="group flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed text-muted-foreground hover:text-foreground"
+            title="Summarize with AI"
+          >
+            {loading === "summarize" ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <Sparkles className="h-3.5 w-3.5" />
+            )}
+            <span>Summarize</span>
+          </button>
+          <button
+            onClick={handleRewrite}
+            disabled={loading !== null || !note.content}
+            className="group flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed text-muted-foreground hover:text-foreground"
+            title="Rewrite with AI"
+          >
+            {loading === "rewrite" ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <Wand2 className="h-3.5 w-3.5" />
+            )}
+            <span>Rewrite</span>
+          </button>
+          <button
+            onClick={handleGenerateTags}
+            disabled={loading !== null || !note.content}
+            className="group flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-accent disabled:opacity-50 disabled:cursor-not-allowed text-muted-foreground hover:text-foreground"
+            title="Generate tags"
+          >
+            {loading === "tag" ? (
+              <Loader2 className="h-3.5 w-3.5 animate-spin" />
+            ) : (
+              <Hash className="h-3.5 w-3.5" />
+            )}
+            <span>Tags</span>
+          </button>
+        </div>
         {note.tags && note.tags.length > 0 && (
-          <div className="flex gap-1 ml-auto">
+          <div className="flex items-center gap-1.5">
             {note.tags.map((tag, i) => (
-              <span key={i} className="text-xs px-2 py-1 rounded bg-primary/10 text-primary">
-                #{tag}
+              <span
+                key={i}
+                className="inline-flex items-center gap-1 text-xs px-2 py-1 rounded-md bg-primary/10 text-primary/90 font-medium"
+              >
+                <Hash className="h-3 w-3" />
+                {tag}
               </span>
             ))}
           </div>
@@ -148,15 +161,41 @@ export function AIToolbar({ note, onUpdate }: AIToolbarProps) {
       </div>
 
       <Dialog open={dialogOpen} onOpenChange={setDialogOpen}>
-        <DialogContent>
+        <DialogContent className="max-w-3xl max-h-[80vh] overflow-hidden flex flex-col">
           <DialogHeader>
-            <DialogTitle>AI Result</DialogTitle>
-            <DialogDescription>
-              Here&apos;s what the AI generated for your note.
-            </DialogDescription>
+            <div className="flex items-center justify-between">
+              <div>
+                <DialogTitle className="text-xl font-semibold">
+                  AI Generated Result
+                </DialogTitle>
+                <DialogDescription className="text-sm text-muted-foreground mt-1">
+                  Review the AI-generated content below
+                </DialogDescription>
+              </div>
+              <div className="flex items-center gap-2">
+                <button
+                  onClick={copyToClipboard}
+                  className="flex items-center gap-1.5 px-3 py-1.5 rounded-md text-xs font-medium transition-all hover:bg-accent text-muted-foreground hover:text-foreground"
+                >
+                  {copied ? (
+                    <>
+                      <Check className="h-3.5 w-3.5" />
+                      Copied
+                    </>
+                  ) : (
+                    <>
+                      <Copy className="h-3.5 w-3.5" />
+                      Copy
+                    </>
+                  )}
+                </button>
+              </div>
+            </div>
           </DialogHeader>
-          <div className="prose dark:prose-invert max-w-none">
-            {result}
+          <div className="flex-1 overflow-auto mt-4">
+            <div className="prose prose-sm dark:prose-invert max-w-none">
+              {result}
+            </div>
           </div>
         </DialogContent>
       </Dialog>

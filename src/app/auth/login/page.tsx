@@ -7,7 +7,14 @@ import { supabase } from "@/lib/supabase";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Label } from "@/components/ui/label";
-import { Card, CardContent, CardDescription, CardFooter, CardHeader, CardTitle } from "@/components/ui/card";
+import {
+  Card,
+  CardContent,
+  CardDescription,
+  CardFooter,
+  CardHeader,
+  CardTitle,
+} from "@/components/ui/card";
 import { Brain } from "lucide-react";
 
 export default function LoginPage() {
@@ -30,9 +37,13 @@ export default function LoginPage() {
 
       if (error) {
         // Check if it's an email confirmation error
-        if (error.message.includes("Email not confirmed") || 
-            error.message.includes("email_not_confirmed")) {
-          router.push(`/onboarding/confirm-email?email=${encodeURIComponent(email)}`);
+        if (
+          error.message.includes("Email not confirmed") ||
+          error.message.includes("email_not_confirmed")
+        ) {
+          router.push(
+            `/onboarding/confirm-email?email=${encodeURIComponent(email)}`
+          );
           return;
         }
         throw error;
@@ -64,15 +75,20 @@ export default function LoginPage() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-gradient-to-br from-gray-50 to-gray-100 dark:from-gray-900 dark:to-gray-800 p-4">
-      <Card className="w-full max-w-md">
-        <CardHeader className="space-y-1">
-          <div className="flex items-center justify-center mb-4">
-            <span className="text-6xl">🪶</span>
+    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+      <Card className="w-full max-w-md border-border/50 shadow-lg">
+        <CardHeader className="space-y-3 pb-6">
+          <div className="flex items-center justify-center mb-2">
+            <div className="relative">
+              <span className="text-6xl">🪶</span>
+              <div className="absolute inset-0 bg-primary/5 blur-2xl -z-10" />
+            </div>
           </div>
-          <CardTitle className="text-2xl text-center">Welcome back to Notiq</CardTitle>
-          <CardDescription className="text-center">
-            Your intelligent second brain awaits
+          <CardTitle className="text-2xl font-semibold text-center">
+            Welcome back
+          </CardTitle>
+          <CardDescription className="text-center text-base">
+            Continue your journey with Notiq
           </CardDescription>
         </CardHeader>
         <CardContent className="space-y-4">
@@ -148,7 +164,10 @@ export default function LoginPage() {
         <CardFooter>
           <p className="text-sm text-center w-full text-muted-foreground">
             Don&apos;t have an account?{" "}
-            <Link href="/auth/register" className="text-primary hover:underline">
+            <Link
+              href="/auth/register"
+              className="text-primary hover:underline"
+            >
               Sign up
             </Link>
           </p>

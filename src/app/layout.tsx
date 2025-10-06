@@ -14,8 +14,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "🪶 Notiq — Your Intelligent Second Brain",
-  description: "A next-generation notes and memory companion that helps you think, create, and remember with intention. Blends elegant design, AI intelligence, and seamless organization.",
+  title: "Notiq — Your Intelligent Second Brain",
+  description:
+    "A next-generation notes and memory companion that helps you think, create, and remember with intention. Blends elegant design, AI intelligence, and seamless organization.",
 };
 
 export default function RootLayout({

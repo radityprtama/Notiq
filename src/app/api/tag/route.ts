@@ -13,11 +13,12 @@ export async function POST(req: Request) {
     }
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "z-ai/glm-4.5-air:free",
       messages: [
-        { 
-          role: "system", 
-          content: "You are a helpful AI that extracts relevant tags from notes. Return only a JSON array of tags (3-5 tags max), lowercase, single words or short phrases. Example: [\"work\", \"meeting\", \"project-alpha\"]" 
+        {
+          role: "system",
+          content:
+            'You are a helpful AI that extracts relevant tags from notes. Return only a JSON array of tags (3-5 tags max), lowercase, single words or short phrases. Example: ["work", "meeting", "project-alpha"]',
         },
         { role: "user", content: `Extract tags from this note:\n${content}` },
       ],
@@ -26,7 +27,7 @@ export async function POST(req: Request) {
 
     const response = completion.choices[0].message?.content || "{}";
     let tags: string[] = [];
-    
+
     try {
       const parsed = JSON.parse(response);
       tags = parsed.tags || [];

@@ -1,19 +1,17 @@
-> [!IMPORTANT]
-> **Notiq** is currently in early development. Some features are still experimental — feedback and contributions are highly appreciated!
+> [!IMPORTANT] > **Notiq** is currently in early development. Some features are still experimental — feedback and contributions are highly appreciated!
 
 # 🪶 Notiq — Notes That Think With You
 
 **Your intelligent second brain for ideas, memories, and knowledge.**
 
-![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge\&logo=nextdotjs\&logoColor=white)
-![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge\&logo=typescript\&logoColor=white)
-![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge\&logo=supabase\&logoColor=white)
-![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge\&logo=openai\&logoColor=white)
-![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge\&logo=tailwindcss\&logoColor=white)
-![Vercel](https://img.shields.io/badge/Vercel-000000?style=for-the-badge\&logo=vercel\&logoColor=white)
+![Next.js](https://img.shields.io/badge/Next.js-000000?style=for-the-badge&logo=nextdotjs&logoColor=white)
+![TypeScript](https://img.shields.io/badge/TypeScript-3178C6?style=for-the-badge&logo=typescript&logoColor=white)
+![Supabase](https://img.shields.io/badge/Supabase-3FCF8E?style=for-the-badge&logo=supabase&logoColor=white)
+![OpenAI](https://img.shields.io/badge/OpenAI-412991?style=for-the-badge&logo=openai&logoColor=white)
+![TailwindCSS](https://img.shields.io/badge/TailwindCSS-06B6D4?style=for-the-badge&logo=tailwindcss&logoColor=white)
 
 [![License](https://img.shields.io/github/license/radityprtama/notiq)](https://github.com/radityprtama/Notiq/blob/5864bdf811df1643634045d15eddc182628b995d/LICENSE)
-[![Deploy to Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge\&logo=vercel)](https://vercel.com/new)
+[![Deploy to Vercel](https://img.shields.io/badge/Deploy-Vercel-black?style=for-the-badge&logo=vercel)](https://vercel.com/new)
 
 ---
 
@@ -26,12 +24,12 @@ It combines elegant design, semantic search, and smart AI assistance — turning
 
 ## ✨ Key Features
 
-* 🧠 **AI Intelligence** – Summarize, rewrite, and auto-tag your notes using GPT-4o-mini.
-* 📝 **Markdown Editor** – Clean, distraction-free writing experience with live preview.
-* 🔍 **Semantic Search** – Find ideas by meaning, not just by words (Supabase Vector).
-* 🤝 **Realtime Collaboration** – Share notes instantly with Supabase Realtime.
-* 🎨 **Beautiful UI** – Built with shadcn/ui, TailwindCSS, and Framer Motion for smooth UX.
-* 🔒 **Secure by Default** – Your data stays private and encrypted.
+- 🧠 **AI Intelligence** – Summarize, rewrite, and auto-tag your notes using GPT-4o-mini.
+- 📝 **Markdown Editor** – Clean, distraction-free writing experience with live preview.
+- 🔍 **Semantic Search** – Find ideas by meaning, not just by words (Supabase Vector).
+- 🤝 **Realtime Collaboration** – Share notes instantly with Supabase Realtime.
+- 🎨 **Beautiful UI** – Built with shadcn/ui, TailwindCSS, and Framer Motion for smooth UX.
+- 🔒 **Secure by Default** – Your data stays private and encrypted.
 
 ---
 
@@ -50,10 +48,10 @@ It combines elegant design, semantic search, and smart AI assistance — turning
 
 ### Prerequisites
 
-* Node.js v18+
-* npm v9+ or pnpm
-* Supabase project
-* OpenAI API key
+- Node.js v18+
+- npm v9+ or pnpm
+- Supabase project
+- OpenAI API key
 
 ### Steps
 
@@ -191,9 +189,9 @@ It combines elegant design, semantic search, and smart AI assistance — turning
 
 Deploy directly on **Vercel** — it’s the easiest way to go live:
 
-* Connect your GitHub repository
-* Add environment variables from your Supabase project
-* Vercel auto-builds and deploys on every commit to `main`
+- Connect your GitHub repository
+- Add environment variables from your Supabase project
+- Vercel auto-builds and deploys on every commit to `main`
 
 [![Deploy with Vercel](https://vercel.com/button)](https://vercel.com/new)
 
@@ -209,15 +207,16 @@ Contributions are welcome! Follow these steps to get started:
    ```bash
    git checkout -b feature/your-feature-name
    ```
+
 3. Commit and push your changes
 4. Open a Pull Request
 
 ### Guidelines
 
-* Follow TypeScript and React best practices
-* Keep commits atomic and meaningful
-* Write clean, readable code
-* Update documentation where needed
+- Follow TypeScript and React best practices
+- Keep commits atomic and meaningful
+- Write clean, readable code
+- Update documentation where needed
 
 ---
 
@@ -259,11 +258,11 @@ notiq/
 
 ## 🧩 Coming Soon
 
-* [ ] AI note clustering and smart tagging
-* [ ] Offline-first mode
-* [ ] Collaborative note spaces
-* [ ] Notiq mobile (PWA)
-* [ ] AI memory recall system
+- [ ] AI note clustering and smart tagging
+- [ ] Offline-first mode
+- [ ] Collaborative note spaces
+- [ ] Notiq mobile (PWA)
+- [ ] AI memory recall system
 
 ---
 
@@ -275,6 +274,5 @@ See [`LICENSE`](LICENSE) for details.
 ---
 
 <div align="center">
-  <strong>from Raditya / Notiq</strong><br/>
   <sub>Notiq — Notes that think with you.</sub><br/><br/>
 </div>

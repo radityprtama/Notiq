@@ -13,15 +13,19 @@ export async function POST(req: Request) {
     }
 
     const completion = await openai.chat.completions.create({
-      model: "gpt-4o-mini",
+      model: "z-ai/glm-4.5-air:free",
       messages: [
-        { role: "system", content: "You are a helpful AI note summarizer. Create concise, clear summaries." },
+        {
+          role: "system",
+          content:
+            "You are a helpful AI note summarizer. Create concise, clear summaries.",
+        },
         { role: "user", content: `Summarize this note:\n${content}` },
       ],
     });
 
-    return NextResponse.json({ 
-      summary: completion.choices[0].message?.content || "" 
+    return NextResponse.json({
+      summary: completion.choices[0].message?.content || "",
     });
   } catch (error) {
     console.error("Summarize error:", error);
